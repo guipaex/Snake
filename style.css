@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+
+*{
+    font-family: 'Tilt Warp', sans-serif;
+}
+:root{
+    --night:#141414;
+    --night-80:#434343;
+    --night-60:#727272;
+    --night-40:#A1A1A1;
+    --night-20:#D0D0D0;
+
+    --lime:#CCFF00;
+    --magnolia:#F7F0F5;
+}
+
+body{
+    background-color: var(--night);
+    text-align: center;
+    color: var(--magnolia);
+}
+#ui p{
+    color: var(--night-40);
+    margin-bottom: 0;
+}
+#score{
+    margin-top: 5px;
+    color: var(--lime);
+}
+.instructions{
+    color: var(--night-60);
+    margin: 20px;
+}
+canvas{
+    border: 1px solid var(--lime);
+    border-radius: 8px;
+
+    -webkit-box-shadow:0px 0px 100px 0px rgba(204,255,0,0.16);
+    -moz-box-shadow: 0px 0px 100px 0px rgba(204,255,0,0.16);
+    box-shadow: 0px 0px 100px 0px rgba(204,255,0,0.16);
+}
