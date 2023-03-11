@@ -1,20 +1,3 @@
-const board = document.getElementById("canvas");
-const ctx = board.getContext("2d")
-
-let blockSize = 25;
-let rows = 20;
-let cols = 20;
-
-let boardHeight = rows*blockSize;
-let boardWidth = cols*blockSize;
-
-let scoreboard = document.getElementById("score");
-let score = 0
-
-let gameOver = false;
-
-const colors = ["#f17105", "#7200FF", "#FB3640"]
-
 //snake
 let snakeX = blockSize * 5;
 let snakeY = blockSize * 5;
@@ -25,20 +8,6 @@ let snakeBody = [];
 //food
 let foodX, foodY;
 let foodColor;
-
-
-window.onload = () => {
-  console.log("Rodando...")
-  board.height = boardHeight;
-  board.width = boardWidth;
-  ctx.fillStyle = "#141414";
-  ctx.fillRect(0, 0, boardWidth, boardHeight);
-
-  
-  spawnFood();
-  document.onkeydown = setDirection;
-  setInterval(update, 100);
-}
 
 function update(){
   clear();
@@ -103,5 +72,9 @@ function setDirection(event){
   if (event.code == "KeyW" && moveY != 1) { moveX = 0; moveY = -1} else
   if (event.code == "KeyD" && moveX != -1) { moveX = 1; moveY = 0} else
   if (event.code == "KeyS" && moveY != -1) { moveX = 0; moveY = 1} else 
-  if (event.code == "KeyA" && moveX != 1) { moveX = -1; moveY = 0}
+  if (event.code == "KeyA" && moveX != 1) { moveX = -1; moveY = 0} else
+  if (event.code == "Enter") {
+    startScreen.style.display = "none";
+    board.style.display = "block";
+  }
 }

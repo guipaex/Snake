@@ -9,18 +9,33 @@
 </head>
 <body>
     <h1>SNAKE GAME</h1>
-    <div id="ui">
-        <p>SCORE</p>
-        <h2 id="score"></h2>
+    <div id="startScreen" class="scene">
+        <h2>Press ENTER to play</h2>
+        <p class="instructions">
+            Use W, A, S, D to Move.
+        </p>
     </div>
-    <canvas id="canvas"></canvas>
-    <div class="instructions">
-        Use W, A, S, D to Move.
+    <div id="gameScene">
+        
+        <canvas id="canvas" class="scene">
+            <p>SCORE</p>
+            <h2 id="score"></h2>
+        </canvas>
+    </div>
+    
+    <div id="gameOver" class="scene">
+        <h1>Game Over</h1>
+        <h2 id="finalScore"></h2>
+        <h3 id="maxScore"></h3> 
+        <button>Reiniciar</button>
     </div>
    <!--<input type="color">-->
-    <script src="scripts/Snake.js"></script>
+    
     <footer>
         Developed by <a href="#">Gui Paes</a>
     </footer>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/Snake.js"></script>
+    <script src="scripts/ui.js"></script>
 </body>
 </html>
