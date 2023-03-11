@@ -11,7 +11,6 @@ let boardWidth = cols*blockSize;
 let scoreboard = document.getElementById("score");
 let score = 0
 
-
 let gameOver = false;
 
 const colors = ["#f17105", "#7200FF", "#FB3640"]
