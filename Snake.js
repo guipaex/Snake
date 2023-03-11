@@ -4,7 +4,13 @@ const ctx = board.getContext("2d")
 let blockSize = 25;
 let rows = 20;
 let cols = 20;
-let score = 0;
+
+let boardHeight = rows*blockSize;
+let boardWidth = cols*blockSize;
+
+let scoreboard = document.getElementById("score");
+let score = 0
+
 
 let gameOver = false;
 
@@ -24,10 +30,11 @@ let foodColor;
 
 window.onload = () => {
   console.log("Rodando...")
-    board.height = rows*blockSize;
-    board.width = cols*blockSize;
+  board.height = boardHeight;
+  board.width = boardWidth;
   ctx.fillStyle = "#141414";
-  ctx.fillRect(0, 0, board.width, board.height);
+  ctx.fillRect(0, 0, boardWidth, boardHeight);
+
   
   spawnFood();
   document.onkeydown = setDirection;
@@ -39,25 +46,10 @@ function update(){
   if(snakeX == foodX && snakeY == foodY){
     snakeBody.push([foodX, foodY]);
     score++
-    console.log (`Score:${score}`)
     spawnFood();
   }
-
-  for(let i = snakeBody.length-1; i > 0; i--){
-    snakeBody[i] = snakeBody[i-1]
-  }
-  if(snakeBody.length){
-    snakeBody[0] = [snakeX, snakeY];
-  }
-
-  snakeX += moveX * blockSize;
-  snakeY += moveY * blockSize;
-  draw(snakeX, snakeY, blockSize, "#CCFF00")
-
-  for(let i = 0; i < snakeBody.length; i++){
-    ctx.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
-  }
-  draw(foodX, foodY, blockSize, foodColor)
+  moveSnake();
+  scoreboard.innerHTML = score
   endGame();
 }
 
@@ -72,6 +64,29 @@ function spawnFood(){
   foodX = Math.floor(Math.random()*cols)*blockSize;
   foodY = Math.floor(Math.random()*rows)*blockSize;
   foodColor = colors[Math.floor(Math.random()*3)]
+}
+function moveSnake(){
+  for(let i = snakeBody.length-1; i > 0; i--){
+    snakeBody[i] = snakeBody[i-1]
+  }
+  if(snakeBody.length){
+    snakeBody[0] = [snakeX, snakeY];
+  }
+
+  snakeX += moveX * blockSize;
+  snakeY += moveY * blockSize;
+
+  if (snakeX == boardWidth){snakeX = 0;}
+  if (snakeX == 0-blockSize){snakeX = boardWidth-blockSize;}
+  if (snakeY == boardHeight){snakeY = 0;}
+  if (snakeY == 0-blockSize){snakeY = boardHeight-blockSize;}
+
+  draw(snakeX, snakeY, blockSize, "#CCFF00")
+
+  for(let i = 0; i < snakeBody.length; i++){
+    ctx.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
+  }
+  draw(foodX, foodY, blockSize, foodColor)
 }
 
 function endGame(){
