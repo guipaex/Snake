@@ -69,10 +69,18 @@ function endGame(){
 }
 
 function setDirection(event){
+  // W, A, S, D commands
   if (event.code == "KeyW" && moveY != 1) { moveX = 0; moveY = -1} else
   if (event.code == "KeyD" && moveX != -1) { moveX = 1; moveY = 0} else
   if (event.code == "KeyS" && moveY != -1) { moveX = 0; moveY = 1} else 
   if (event.code == "KeyA" && moveX != 1) { moveX = -1; moveY = 0} else
+
+  //Arrow commands (↑, →, ↓ ←) 
+  if (event.code == "ArrowUp" && moveY != 1) { moveX = 0; moveY = -1} else
+  if (event.code == "ArrowRight" && moveX != -1) { moveX = 1; moveY = 0} else
+  if (event.code == "ArrowDown" && moveY != -1) { moveX = 0; moveY = 1} else 
+  if (event.code == "ArrowLeft" && moveX != 1) { moveX = -1; moveY = 0} else
+
   if (event.code == "Enter") {
     startScreen.style.display = "none";
     board.style.display = "block";

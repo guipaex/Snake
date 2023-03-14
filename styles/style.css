@@ -1,37 +1,59 @@
 @import url(root.css);
-@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800');
 
 *{
-    font-family: 'Tilt Warp', sans-serif;
     padding: 0;
     margin: 0;
+    line-height: 0;
     box-sizing: border-box;
+    font-family: 'Poppins';
+    text-decoration: none;
 }
 body{
     background-color: var(--night);
     text-align: center;
     color: var(--magnolia);
 }
-#startScreen{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-#score{
-    margin-top: 5px;
-    color: var(--lime);
+header{
+    padding: 20px;
+    margin: 50px auto 10px auto;
+    font-weight: 800;
+    font-size: 1.5rem;
 }
 .instructions{
     color: var(--night-60);
-    margin: 20px;
+    margin: 2rem;
+    font-size: .8rem;
+    font-weight: 600;
 }
-  
-.scene{
-    display: none;
+.scoreboard{
+    max-width: 250px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+    font-weight: 800;
     margin: auto;
-    border-radius: 8px;
+}
+#score{
+    color: var(--lime);
+    font-size: 2rem;
+}
+
+.gameScene{
+    margin: auto;
+    display: flex;
+}
+.board{
+    margin: 2.5rem auto;
+    border: 1px solid var(--lime);
+    border-radius: 4px;
     -webkit-box-shadow:0px 0px 100px 0px rgba(204,255,0,0.16);
     -moz-box-shadow: 0px 0px 100px 0px rgba(204,255,0,0.16);
     box-shadow: 0px 0px 100px 0px rgba(204,255,0,0.16);
+}
+
+footer a{
+    color: var(--lime);
 }
