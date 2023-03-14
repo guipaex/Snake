@@ -17,24 +17,21 @@
     <div id="gameScene">
         <div class="scoreboard">
             <p>SCORE:</p>
-            <h2 id="score"></h2>
+            <p id="score"></p>
         </div>
-       
-        <canvas id="canvas" class="board">
-        </canvas>
+        <canvas id="canvas" class="board" width="400" height="400"></canvas>
+        <div id="gameOver">
+            <h1>GAME OVER</h1>
+            <h2 id="finalScore"></h2>
+            <p id="maxScore"></p> 
+            <button onclick="reset()">Reiniciar</button>
+        </div>
     </div>
-   <!-- <div id="gameOver">
-        <h1>Game Over</h1>
-        <h2 id="finalScore"></h2>
-        <h3 id="maxScore"></h3> 
-        <button>Reiniciar</button>
-    </div>-->
-    
     <footer>
         Developed by <a href="https://github.com/guipaex/">Gui Paes</a>  || All Rights Reserved.
     </footer>
     <script src="scripts/main.js"></script>
-    <script src="scripts/Snake.js"></script>
-    <!--<script src="scripts/ui.js"></script>-->
+    <script src="scripts/game.js"></script>
+    <script src="scripts/ui.js"></script>
 </body>
 </html>

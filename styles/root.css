@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800');
+
 :root{
     --night:#141414;
     --night-80:#434343;
@@ -9,4 +11,12 @@
     --magnolia:#F7F0F5;
 
     font-family: 'Poppins', sans-serif;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+    text-decoration: none;
 }

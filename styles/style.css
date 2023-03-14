@@ -1,34 +1,32 @@
 @import url(root.css);
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800');
 
-*{
-    padding: 0;
-    margin: 0;
-    line-height: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins';
-    text-decoration: none;
-}
 body{
     background-color: var(--night);
     text-align: center;
     color: var(--magnolia);
 }
 header{
-    padding: 20px;
-    margin: 50px auto 10px auto;
+    text-align: center;
+    margin: auto;
+    margin-top: 60px;
     font-weight: 800;
     font-size: 1.5rem;
 }
 .instructions{
     color: var(--night-60);
-    margin: 2rem;
+    margin: auto;
     font-size: .8rem;
     font-weight: 600;
 }
+#gameScene{
+    margin: 50px auto;
+}
+.gameScene{
+    margin: auto;
+}
 .scoreboard{
     max-width: 250px;
-    height: 25px;
+    height: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -40,13 +38,10 @@ header{
     color: var(--lime);
     font-size: 2rem;
 }
-
-.gameScene{
-    margin: auto;
-    display: flex;
-}
 .board{
-    margin: 2.5rem auto;
+    position: absolute;
+    top: 0; right: 0; left: 0;bottom: 0;
+    margin: auto;
     border: 1px solid var(--lime);
     border-radius: 4px;
     -webkit-box-shadow:0px 0px 100px 0px rgba(204,255,0,0.16);
@@ -54,6 +49,51 @@ header{
     box-shadow: 0px 0px 100px 0px rgba(204,255,0,0.16);
 }
 
+#gameOver{
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 0; right: 0; left: 0;bottom: 0;
+    margin: auto;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(20, 20, 20, .5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 4px;
+}
+#gameOver button{
+    color: var(--night);
+    font-weight: 600;
+    margin: 3rem auto;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: .25rem;
+    background: var(--magnolia);
+    cursor:pointer;
+    transition: 200ms;
+    
+}
+#gameOver button:hover{
+    transform: scale(1.1);
+    -webkit-box-shadow:0px 0px 70px 0px rgba(204,255,0,0.3);
+    -moz-box-shadow: 0px 0px 70px 0px rgba(204,255,0,0.3);
+    box-shadow: 0px 0px 70px 0px rgba(204,255,0,0.3);
+}
+
+footer{
+    position: absolute;
+    margin: auto;
+    bottom: 0;
+    left: 0;    right: 0;
+    border-top: 1px solid var(--lime);
+    padding: 1.25rem;
+    width: 80%;
+    text-align: center;
+    font-size: .75rem;
+}
 footer a{
     color: var(--lime);
 }

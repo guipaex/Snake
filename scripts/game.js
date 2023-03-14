@@ -1,7 +1,7 @@
 //snake
-let snakeX = blockSize * 5;
-let snakeY = blockSize * 5;
-let moveX = 0;
+let snakeX = blockSize * Math.floor(Math.random()*19);
+let snakeY = blockSize * Math.floor(Math.random()*19);
+let moveX = +1;
 let moveY = 0;
 let snakeBody = [];
 
@@ -9,25 +9,33 @@ let snakeBody = [];
 let foodX, foodY;
 let foodColor;
 
-function update(){
-  clear();
-  if(snakeX == foodX && snakeY == foodY){
-    snakeBody.push([foodX, foodY]);
-    score++
-    spawnFood();
-  }
-  moveSnake();
-  scoreboard.innerHTML = score
-  endGame();
+let score = 0;
+let speed = 100;
+
+let runningGame
+
+function startGame(){
+  spawnFood();
+  runningGame = setInterval(update, speed);
 }
 
-function draw(x, y, s, color){
-  ctx.fillStyle = color;
-  ctx.fillRect(x, y, s, s);
+function update(){
+  clear();  //limpa o canvas (atualiza no tempo 'speed')
+  drawBoard() //desenha o grid
+  scoreboard.innerHTML = score //desenha o scoreboard
+  document.onkeydown = setDirection; //Move de acordo com oq foi teclado
+  
+  if(snakeX == foodX && snakeY == foodY){
+    spawnFood();
+    snakeBody.push([foodX, foodY]);
+    score++
+  }
+  moveSnake();
+  endGame();
+ 
+  
 }
-function clear(){
-  ctx.clearRect(0, 0, 800, 600);
-}
+
 function spawnFood(){
   foodX = Math.floor(Math.random()*cols)*blockSize;
   foodY = Math.floor(Math.random()*rows)*blockSize;
@@ -40,10 +48,10 @@ function moveSnake(){
   if(snakeBody.length){
     snakeBody[0] = [snakeX, snakeY];
   }
-
   snakeX += moveX * blockSize;
   snakeY += moveY * blockSize;
 
+  //Removing walls
   if (snakeX == boardWidth){snakeX = 0;}
   if (snakeX == 0-blockSize){snakeX = boardWidth-blockSize;}
   if (snakeY == boardHeight){snakeY = 0;}
@@ -56,33 +64,29 @@ function moveSnake(){
   }
   draw(foodX, foodY, blockSize, foodColor)
 }
-
 function endGame(){
-  for(let i = 0; i <snakeBody.length; i++){
+  for(let i = 0; i < snakeBody.length; i++){
     if (snakeX == snakeBody[i][0] && snakeY == snakeBody[i][1]){
       gameOver = true
-      alert("Game Over")
-      clear();
     }
   }
-  
+
+    if(gameOver == true){
+      highscore()
+      console.log("Game Over")
+      endScreen.style.display = "flex";
+      maxScore.innerHTML = `Your Highscore is: ${window.localStorage.getItem("Highscore")}`;
+      currentScore.innerHTML = `Your score: ${score}`;
+      clearInterval(runningGame);
+    } else {
+      endScreen.style.display = "none";
+
+  }
 }
 
-function setDirection(event){
-  // W, A, S, D commands
-  if (event.code == "KeyW" && moveY != 1) { moveX = 0; moveY = -1} else
-  if (event.code == "KeyD" && moveX != -1) { moveX = 1; moveY = 0} else
-  if (event.code == "KeyS" && moveY != -1) { moveX = 0; moveY = 1} else 
-  if (event.code == "KeyA" && moveX != 1) { moveX = -1; moveY = 0} else
-
-  //Arrow commands (↑, →, ↓ ←) 
-  if (event.code == "ArrowUp" && moveY != 1) { moveX = 0; moveY = -1} else
-  if (event.code == "ArrowRight" && moveX != -1) { moveX = 1; moveY = 0} else
-  if (event.code == "ArrowDown" && moveY != -1) { moveX = 0; moveY = 1} else 
-  if (event.code == "ArrowLeft" && moveX != 1) { moveX = -1; moveY = 0} else
-
-  if (event.code == "Enter") {
-    startScreen.style.display = "none";
-    board.style.display = "block";
+function highscore(){
+  let highscore = window.localStorage.getItem("Highscore")
+  if (score >= highscore){
+    window.localStorage.setItem("Highscore", score)
   }
 }
