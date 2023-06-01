@@ -10,7 +10,7 @@
 <br />
 
 <h3>
-    Portfolio desenvolvido com HTML, CSS e JavaScript, o site utiliza a API do GitHub para mostrar os principais projetos desenvolvidos durante minha jornada de estudos e aprendizado como desenvolvedor Full Stack.
+    Clássico jogo Snake desenvolvido com Html, CSS e JavaScript, utilizando LocalStorage para salvar o maior recorde do jogador, na memória do navegador.
 </h3>
 <br />
 <a href="https://guipaex.github.io/Snake-Game/" alt="Ver site">Ver Demo</a>
