@@ -1,6 +1,6 @@
 
 <h1>
-<img width="100%" src="./_assets/Banner_README.png">
+<img width="100%" src="./assets/Banner_README.png">
 </h1>
  
 ![LICENCA](https://img.shields.io/github/license/guipaex/Snake-Game?style=for-the-badge)
